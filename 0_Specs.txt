@@ -1,0 +1,24 @@
+Display a responsive / mobile friendly list of data 
+showcasing the data provided to you via JSON 
+matching the following specific requirements:
+
+
+  * Width fixed header on the top of the page that reads “User Directory”
+  * Fixed header should change to scroll with the page in a ‘tablet’ or ‘phone’ viewport.
+
+  * A list of all users should be rendered on the page via client side technology from the
+    supplied JSON.
+
+  * A collapsable / expandable section per user showing the following information when
+    collapsed:
+      # First and last name
+      # Email address
+      # An icon representing if the user has a telephone number on file or not
+      
+  * When section is toggled open, the following contact information should be visible:
+      # Username
+      # Email
+      # Address information ( street, suite, city, zip code )
+      # Phone Number
+      # An External link to the user’s website.
+

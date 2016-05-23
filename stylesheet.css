@@ -1,0 +1,190 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+html,body {
+  height:100%;
+}
+
+/* Peadpod */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,
+p,blockquote,pre,a,abbr,acronym,address,big,cite,code,
+del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,
+sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,
+form,label,legend,table,caption,tbody,tfoot,thead,tr,th,
+td,article,aside,canvas,details,embed,figure,figcaption,
+footer,header,hgroup,menu,nav,output,ruby,section,summary,
+time,mark,audio,video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* MOBILE */
+#wrapper {
+  min-height:100%;
+  position:relative;
+}
+
+#header, #footer {
+  background-color: #3f4e52;
+  text-align: center;
+  color: white;
+  padding-top: 15px;
+  width: 100%;
+  height: 45px;
+}
+
+#main_content {
+  max-width: 1400px;
+  margin: 0 auto;
+  background: pink;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 15px 15px 60px 15px;
+}
+
+#main_content > div {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 11px 0;
+  border: 1px solid red;
+}
+
+#footer{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+ul {
+  background-color: rgba(255, 80, 96, 1);
+  margin: 0 auto;
+  width: 90%;
+  padding-left: 5px;
+}
+
+li {
+  padding: 5px;
+}
+
+
+a:link, a:visited,a:active  {
+  color:#ffffff;
+  text-decoration: none;
+  padding-bottom: 3px;
+}
+
+a:hover{
+  border-bottom: 2px solid #ffffff;
+}
+
+/* UI Class Controls */
+.initial li:nth-of-type(2), 
+.initial li:nth-of-type(5), 
+.initial li:nth-of-type(6),
+.initial li:nth-of-type(7), 
+.initial li:nth-of-type(8),
+.initial li:nth-of-type(9),
+.initial li:nth-of-type(10) {
+ display: none;
+}
+
+.updated li:nth-of-type(2), 
+.updated li:nth-of-type(3), 
+.updated li:nth-of-type(5),
+.updated li:nth-of-type(6), 
+.updated li:nth-of-type(7),
+.updated li:nth-of-type(8),
+.updated li:nth-of-type(9),
+.updated li:nth-of-type(10) {
+ display: inherit;
+}
+
+ul.initial.updated > li:nth-of-type(1), 
+ul.initial.updated > li:nth-of-type(4) {
+    display: none;
+}
+/* UI Class Control END */
+
+
+/* TABLET */
+@media only screen and (min-width : 768px) {
+  #main_content {
+    margin-top: 14px;
+    padding: 15px 15px 90px 15px;
+  }
+
+  #main_content > div {
+    width: 75%;
+    margin: 20px 0;
+    padding: 11px 0;
+    border: 1px solid #3f4e52;
+  }
+
+  .initial {
+   height: 220px;
+  }
+}
+
+@media only screen and (min-width : 963px) {
+  #header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: #3f4e52;
+  }
+
+  #main_content {
+    margin-top: 72px;
+    padding: 15px;
+  }
+
+  #main_content > div {
+    width: 30%;
+  }
+}
