@@ -1,9 +1,9 @@
 //
-// Create static template BODY
+// Static UI Template Builder
 //
 
 (function htmlBody(){
-// script
+  // script
   var script = document.querySelector('script');
 
   // Wrapper
@@ -45,11 +45,17 @@
   // WORKING WITH THE DATA
   xhr.onreadystatechange = function () {
     if (this.readyState === 4 && this.status === 200){
+
       // the request is complete, parse data and call callback
       var userData = JSON.parse(this.responseText);
 
-      // Call this function on Success
+      //
+      // Call these function on Success
+      //
+
+      // JSON Loop
       module_build(userData);
+      // Event Handler
       showMore();
     }
   };
@@ -67,9 +73,10 @@ function module_build(userData){
   }
 }
 
-
+//
+// Dynamic UI Template Builder
+//
 function module_html(key, userData){
-
   var user_data = userData[key];
   var user_id = userData[key].id;
 
@@ -88,60 +95,68 @@ function module_html(key, userData){
   data_result_div.appendChild(list);
 
   // name
-  var list_name = document.createElement('li');
-  list_name.innerHTML =  'Name: ' + userData[key].name;
-  list.appendChild(list_name);
+  list_name(userData, key, list);
 
-  var list_username = document.createElement('li');
-  list_username.innerHTML =  'Username: ' + userData[key].username;
-  list.appendChild(list_username)
-
+  // username
+  list_username(userData, key, list);
   // email
-  var list_email = document.createElement('li');
-  list_email.innerHTML =  'email: ' + userData[key].email;
-  list.appendChild(list_email);
+  list_email(userData, key, list);
 
-  // icon function
-  var list_phone_icon = document.createElement('li');
-  list.appendChild(list_phone_icon);
-  icon_function(userData, key,list_phone_icon);
+  // icon
+  list_icon(userData, key, list);
 
   // street
-  var list_street = document.createElement('li');
-  list_street.innerHTML =  'Street: ' + userData[key].address.street;
-  list.appendChild(list_street);
+  list_street(userData, key, list);
 
   // suite
-  var list_suite = document.createElement('li');
-  list_suite.innerHTML =  'Suite: ' + userData[key].address.suite;
-  list.appendChild(list_suite);
+  list_suite(userData, key, list);
 
   // city
-  var list_city = document.createElement('li');
-  list_city.innerHTML =  'City: ' + userData[key].address.city;
-  list.appendChild(list_city);
+  list_city(userData, key, list);
 
   //Zipcode
-  var list_zipcode = document.createElement('li');
-  list_zipcode.innerHTML =  'Zip Code: ' + userData[key].address.zipcode;
-  list.appendChild(list_zipcode);
+  list_zipcode(userData, key, list);
 
   // phone number
-  var list_phone = document.createElement('li');
-  list_phone.innerHTML =  phone_function(userData, key);
-  list.appendChild(list_phone);
+  list_phone(userData, key, list);
 
   // Website
-  var list_website = document.createElement('li');
-  var list_website_link = document.createElement('a');
-  list_website_link.setAttribute('href', 'http://www.' + userData[key].website);
-  list_website_link.setAttribute('target', '_blank');
-  list_website_link.innerHTML = userData[key].website;
-  list.appendChild(list_website);
-  list_website.appendChild(list_website_link);
+  list_website(userData, key, list);
 } // end function
 
 
+//
+// name
+//
+function list_name(userData, key, list){
+  var list_name = document.createElement('li');
+  list_name.innerHTML =  'Name: ' + userData[key].name;
+  list.appendChild(list_name);
+}
+//
+// username
+//
+function list_username(userData, key, list){
+  var list_username = document.createElement('li');
+  list_username.innerHTML =  'Username: ' + userData[key].username;
+  list.appendChild(list_username)
+}
+//
+// email
+//
+function list_email(userData, key, list){
+  var list_email = document.createElement('li');
+  list_email.innerHTML =  'email: ' + userData[key].email;
+  list.appendChild(list_email);
+}
+//
+// icon
+//
+function list_icon(userData, key, list){
+  var list_phone_icon = document.createElement('li');
+  list.appendChild(list_phone_icon);
+  icon_function(userData, key,list_phone_icon);
+}
 //
 // Icon Function
 //
@@ -152,8 +167,6 @@ function icon_function(userData, key,list_phone_icon){
     return no(list_phone_icon);
   }
 }
-
-
 //
 // Icon Conditional Functions
 //
@@ -168,7 +181,46 @@ function yes(list_phone_icon){
   image_yes.setAttribute('src', 'imgs/yes.png');
   list_phone_icon.appendChild(image_yes);
 }
-
+//
+// street
+//
+function list_street(userData, key, list){
+  var list_street = document.createElement('li');
+  list_street.innerHTML =  'Street: ' + userData[key].address.street;
+  list.appendChild(list_street);
+}
+//
+// suite
+//
+function list_suite(userData, key, list){
+  var list_suite = document.createElement('li');
+  list_suite.innerHTML =  'Suite: ' + userData[key].address.suite;
+  list.appendChild(list_suite);
+}
+//
+// city
+//
+function list_city(userData, key, list) {
+  var list_city = document.createElement('li');
+  list_city.innerHTML =  'City: ' + userData[key].address.city;
+  list.appendChild(list_city);
+}
+//
+// zipcode
+//
+function list_zipcode(userData, key, list){
+  var list_zipcode = document.createElement('li');
+  list_zipcode.innerHTML =  'Zip Code: ' + userData[key].address.zipcode;
+  list.appendChild(list_zipcode);
+}
+//
+// phone
+//
+function list_phone(userData, key, list) {
+  var list_phone = document.createElement('li');
+  list_phone.innerHTML =  phone_function(userData, key);
+  list.appendChild(list_phone);
+}
 //
 // Phone Function
 //
@@ -178,6 +230,18 @@ function phone_function(userData, key){
   }else{
     return 'Phone: N/A';
   }
+}
+//
+// website
+//
+function list_website(userData, key, list){
+  var list_website = document.createElement('li');
+  var list_website_link = document.createElement('a');
+  list_website_link.setAttribute('href', 'http://www.' + userData[key].website);
+  list_website_link.setAttribute('target', '_blank');
+  list_website_link.innerHTML = userData[key].website;
+  list.appendChild(list_website);
+  list_website.appendChild(list_website_link);
 }
 
 
